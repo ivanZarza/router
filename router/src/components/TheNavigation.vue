@@ -1,11 +1,20 @@
+<script setup>
+import sourceData from '@/data.json'
+
+const destinations = sourceData.destinations
+
+
+</script>
+
+
 <template>
   <div id="nav">
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/brazil">Brasil</RouterLink>
-        <RouterLink to="/hawaii">Hawaii</RouterLink>
-        <RouterLink to="/jamaica">Jamaica</RouterLink>
-        <RouterLink to="/panama">Panama</RouterLink>
-      </nav>
+    <RouterLink id="logo" to="/">INICIO</RouterLink>
+    <RouterLink 
+        v-for="destination in destinations" 
+        :key="destination.id"
+        :to="{ name: 'destination', params: { id: destination.id, slug: destination.slug } }"
+        >{{ destination.name }}
+      </RouterLink>
   </div>
 </template>  

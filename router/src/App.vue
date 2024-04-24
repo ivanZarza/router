@@ -8,7 +8,7 @@ import TheNavigation from './components/TheNavigation.vue'
     <TheNavigation />
   </header>
   <div class="container">
-  <RouterView />
+  <RouterView :key="$route.path" /> <!--con La clave pasada a key, conseguimos que se vuelva a renderizar la ruta si cambia la direccion-->
   </div>
 </template>
 

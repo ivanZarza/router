@@ -10,29 +10,11 @@ const router = createRouter({
       component: HomeView
     },
     {
-      path: '/brazil',
-      name: 'brazil',
-      component: () => import('../views/BrazilView.vue'),
-    },
-    {
-      path: '/hawaii',
-      name: 'hawaii',
-      component: () => import('../views/HawaiiView.vue'),
-    },    
-    {
-      path: '/jamaica',
-      name: 'jamaica',
-      component: () => import ('../views/JamaicaView.vue'),
-    },    
-    {
-      path: '/panama',
-      name: 'panama',
-      component: () => import('../views/PanamaView.vue')
-    },
-    {
-      path: '/destination/:id',
+      path: '/destination/:id/:slug',
       name: 'destination',
-      component: () => import('../views/DestinationView.vue')
+      component: () => import('../views/DestinationView.vue'),
+      props: (route) => ({ id: parseInt(route.params.id) }) // dentro de las props se puede hacer un parseo de los valores mediante un objeto a diferentes props,
+                                                            //  asi como asignar una funcion para modificar alguna props en especifico
     }
   ]
 })
