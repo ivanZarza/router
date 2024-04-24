@@ -3,7 +3,7 @@
 defineProps({
   experience: Object
 })
-
+console.log(experience);
 </script>
 
 <template>
