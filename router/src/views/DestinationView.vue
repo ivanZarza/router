@@ -13,18 +13,22 @@ const destination = computed(() => {
 });
 console.log(destination);
 /* const destination = computed(() => {
-  return sourceData.destinations.find(destination => destination.id === parseInt($route.params.id));
+  return sourceData.destinations.find(destination => destination.id === parseInt(route.params.id));
 }); */
+
+//Por que $route y no route 
 </script>
 
 <template>
 
-<h1> probando los parametros de las rutas{{ $route.params.id }}</h1>
+<h1> probando los parametros de las rutas {{ $route.params.id }}</h1>
 
   <div>
     <h1>{{ destination.name }}</h1>
-    <img :src="`/images/${destination.image}`" :alt="destination.name">
-
+    <div class="destination-details">
+      <img :src="`/images/${destination.image}`" :alt="destination.name">
+      <p>{{ destination.description }}</p>
+    </div>
   </div>
 
 </template>
