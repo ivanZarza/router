@@ -3,8 +3,9 @@
 defineProps({
   experience: Object
 })
-console.log(experience);
+
 </script>
+
 
 <template>
   <div class="card">
@@ -13,6 +14,4 @@ console.log(experience);
       {{ experience.name }}
     </span>
   </div>
-
-
 </template>

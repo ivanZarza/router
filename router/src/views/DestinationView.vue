@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from 'vue';
 import sourceData from '@/data.json';
-import ExperienceCard from '@/components/ExperienceCard.vue';
+import ExperienceCard from '../components/ExperienceCard.vue';
 /* import { useRoute } from 'vue-router';
 
 const route = useRoute(); */
@@ -36,8 +36,8 @@ console.log(destination);
     <h2>Experiencias top en {{ destination.name }}</h2>
     <div class="cards">
       <ExperienceCard 
-        v-for="experience in destination.experience" 
-        :key="destination.slug" 
+        v-for="experience in destination.experiences" 
+        :key="experience.slug" 
         :experience="experience"
       />
     </div>
