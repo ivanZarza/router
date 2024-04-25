@@ -35,11 +35,13 @@ console.log(destination);
   <section class="experiences">
     <h2>Experiencias top en {{ destination.name }}</h2>
     <div class="cards">
-      <ExperienceCard 
-        v-for="experience in destination.experiences" 
-        :key="experience.slug" 
-        :experience="experience"
-      />
+      <RouterLink 
+          v-for="experience in destination.experiences" 
+          :key="experience.slug" 
+          :to="{ name: 'experience', params: { id: destination.id, experienceSlug: experience.slug } }"
+          >
+        <ExperienceCard :experience="experience"/>
+      </RouterLink>
     </div>
   </section>
 </template>

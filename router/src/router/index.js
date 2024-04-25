@@ -13,8 +13,14 @@ const router = createRouter({
       path: '/destination/:id/:slug',
       name: 'destination',
       component: () => import('../views/DestinationView.vue'),
-      props: (route) => ({ id: parseInt(route.params.id) }) // dentro de las props se puede hacer un parseo de los valores mediante un objeto a diferentes props,
+      props: (route) => ({id: parseInt(route.params.id) }) // dentro de las props se puede hacer un parseo de los valores mediante un objeto a diferentes props,
                                                             //  asi como asignar una funcion para modificar alguna props en especifico
+    },
+    {
+      path: '/destination/:id/:slug/:experienceSlug',
+      name: 'experience',
+      component: () => import('../views/ExperincesShowView.vue'),
+      props: (route) => ({...route.params, id: parseInt(route.params.id),})
     }
   ]
 })
