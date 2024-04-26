@@ -2,30 +2,26 @@
 import { computed } from 'vue';
 import sourceData from '@/data.json';
 import ExperienceCard from '../components/ExperienceCard.vue';
-/* import { useRoute } from 'vue-router';
-
-const route = useRoute(); */
+import GoBack from '../components/GoBack.vue';
 
 const props = defineProps({
   id: Number
 })
-
+// AQUI CREAMOS UNA CONSTANTE COMPUTADA PARA BUSCAR EL DESTINO QUE COINCIDA CON EL ID QUE RECIBIMOS POR PARAMETRO
 const destination = computed(() => {
-  return sourceData.destinations.find(destination => destination.id === props.id);//explicar esto
+  return sourceData.destinations.find(destination => destination.id === props.id);
 });
 console.log(destination);
-/* const destination = computed(() => {
-  return sourceData.destinations.find(destination => destination.id === parseInt(route.params.id));
-}); */
 
-//Por que $route y no route 
 </script>
 
 <template>
+<div>
   <section>
     <h1> probando los parametros de las rutas {{ $route.params.id }}</h1>
     <div>
       <h1>{{ destination.name }}</h1>
+      <GoBack/>
       <div class="destination-details">
         <img :src="`/images/${destination.image}`" :alt="destination.name">
         <p>{{ destination.description }}</p>
@@ -43,7 +39,9 @@ console.log(destination);
         <ExperienceCard :experience="experience"/>
       </RouterLink>
     </div>
+    <RouterView/> <!-- Podemos meter un routerview, dentro de un componente, para que se renderice el componente hijo-->
   </section>
+</div>
 </template>
 
 <style>

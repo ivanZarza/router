@@ -8,70 +8,27 @@ import TheNavigation from './components/TheNavigation.vue'
     <TheNavigation />
   </header>
   <div class="container">
-  <RouterView :key="$route.path" /> <!--con La clave pasada a key, conseguimos que se vuelva a renderizar la ruta si cambia la direccion-->
+    <!-- AQUI CREAMOS UN ROUTERVIEW,Y LE PASAMOS UN SLOT PARA QUE SE RENDERICE EL COMPONENTE HIJO QUE COINCIDA CON LA RUTA,Y ASI PODER NAVEGAR ENTRE RUTAS -->
+    <RouterView v-slot="{ Component: RouteComponent }">
+      <!-- AQUI CREAMOS UNA TRANSICION PARA QUE LOS COMPONENTES SEAN MAS SUAVES -->
+      <Transition name="fade" mode="out-in">
+<!--    AQUI CREAMOS UN COMPONENTE QUE SE RENDERIZARA DEPENDIENDO DE LA RUTA, Y LE PASAMOS LA RUTA COMO KEY,
+        TAMBIEN LE PASAMOS UN SLOT PARA QUE SE RENDERICE EL COMPONENTE HIJO QUE COINCIDA CON LA RUTA,Y ASI ACTIVARA LA TRANSICION
+        ROUTERVIEW PASA SU FUNCION A COMPONENT Y EN ESTE, SE PUEDE ACTIVAR LA TRANSICION, DENTRO DEL COMPONENTE QUE SE VE, DEBE ESTAR TODO EL CONTENIDO EN UN DIV -->
+        <component :is="RouteComponent" :key="$route.path" /><!-- AQUI PASAMOS LA RUTA COMO KEY,ASI CONSEGUIMOS QUE SE VUELVA A RENDERIZAR LA VISTA CUANDO CAMBIE LA RUTA -->
+      </Transition>
+    </RouterView>
   </div>
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.5s;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
+.fade-enter, .fade-leave-to {
+  opacity: 0;
 }
 </style>
+
