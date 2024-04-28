@@ -16,5 +16,6 @@ const destinations = sourceData.destinations
         :to="{ name: 'destination', params: { id: destination.id, slug: destination.slug } }"
         >{{ destination.name }}
       </RouterLink>
+      <RouterLink :to="{ name:'protected' }">Dashboard</RouterLink>
   </div>
 </template>  
