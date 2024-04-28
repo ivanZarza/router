@@ -7,15 +7,11 @@ import { RouterLink } from 'vue-router'
 //Hay que importar computed de vue
 import { computed } from 'vue'
 
-//Definimos las props del componente AppLink que son obligatorias y de tipo string u objeto
-//Estas props son el destino del link que se va a renderizar en el componente AppLink, y es el to de RouterLink
-//si es un string se considera un link externo por que pasa la url completa,
-//si es un objeto se considera un link interno y se pasa el objeto con la ruta
+//Definimos las propiedades del componente que son las mismas que las de RouterLink 
+//para que se puedan pasar al componente como props y se puedan usar en el RouterLink interno
+//Asi conseguimos tener todas las herramientas de RouterLink en nuestro componente
 const props = defineProps({
-  to: {
-    type: [String, Object],
-    required: true
-  }
+  ...RouterLink.props,
 })
 
 //Definimos una variable computada que nos dice si el link es externo o no
