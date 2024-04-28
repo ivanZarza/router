@@ -10,7 +10,8 @@ const username = ref('')
 const password = ref('')
 
 function login() {
-  // Extraemos el nombre de usuario de la ventana global (donde guardamos el valor pasado por el usuario al input ) y lo asignamos a la variable username
+  // Extraemos el nombre de usuario de la ventana global (donde guardamos el valor pasado por el usuario al input ) 
+  //y lo asignamos a la variable username
   window.user = { username: username.value }
   // Extraemos la ruta de redirección de la ruta actual y la asignamos a la variable redirectPath
   const redirectPath = route.query.redirect
