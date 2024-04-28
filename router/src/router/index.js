@@ -8,15 +8,23 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView
+      component: HomeView,
+      //se puede agregar un alias a una ruta, para que se renderice en la misma ruta
+      alias: '/home'
     },
     {
       path: '/protected',
       name: 'protected',
-      component: () => import('../views/ProtectedView.vue'),
-      //meta se usa para proteger rutas, se puede agregar cualquier propiedad al objeto meta
-      //en este caso se agrega la propiedad requiresAuth con el valor true
-      //se puede acceder a las propiedades de meta en la vista destino, mediante el objeto $route
+      //se pueden renderizar varios componentes en una misma ruta,
+      //en este caso se renderiza el componente por defecto y el componente LeftSidebar
+      //se pueden renderizar componentes dinamicos, que se renderizan solo si se usan en la vista
+      //en este caso se renderiza el componente LeftSidebar solo si se usa en la vista,
+      //Es importante que la clave que incorporamos en el routerview (LeftSidebar), en el componente App.vue 
+      //sea igual al nombre de la propiedad que le pasamos al objeto component
+      components: {
+        default: () => import('../views/ProtectedView.vue'),
+        LeftSidebar: () => import('../components/LeftSidebar.vue')
+      },
       meta: {
         requiresAuth: true
       }
@@ -29,7 +37,13 @@ const router = createRouter({
     {
       path: '/invoices',
       name: 'invoices',
-      component: () => import('../views/InvoicesPageView.vue'),
+      component: {
+        default: () => import('../views/InvoicesPageView.vue'),
+        LeftSidebar: () => import('../components/LeftSidebar.vue')
+      },
+      //meta se usa para proteger rutas, se puede agregar cualquier propiedad al objeto meta
+      //en este caso se agrega la propiedad requiresAuth con el valor true
+      //se puede acceder a las propiedades de meta en la vista destino, mediante el objeto $route
       meta: {
         requiresAuth: true
       }

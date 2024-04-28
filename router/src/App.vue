@@ -8,8 +8,11 @@ import TheNavigation from './components/TheNavigation.vue'
     <TheNavigation />
   </header>
   <div class="container">
+<!--     Para que aparezca la barra lateral, hay que añadir el componente LeftSidebar a la vista principal
+    pasandole el nombre sel componente dentro de name, emulamos un <slot></slot> -->
+    <RouterView class="view left-sidebar" name="LeftSidebar" />
     <!-- AQUI CREAMOS UN ROUTERVIEW,Y LE PASAMOS UN SLOT PARA QUE SE RENDERICE EL COMPONENTE HIJO QUE COINCIDA CON LA RUTA,Y ASI PODER NAVEGAR ENTRE RUTAS -->
-    <RouterView v-slot="{ Component: RouteComponent }">
+    <RouterView v-slot="{ Component: RouteComponent }" class="main-view" >
       <!-- AQUI CREAMOS UNA TRANSICION PARA QUE LOS COMPONENTES SEAN MAS SUAVES -->
       <Transition name="fade" mode="out-in" >
 <!--    AQUI CREAMOS UN COMPONENTE QUE SE RENDERIZARA DEPENDIENDO DE LA RUTA, Y LE PASAMOS LA RUTA COMO KEY,
@@ -30,5 +33,18 @@ import TheNavigation from './components/TheNavigation.vue'
 .fade-enter, .fade-leave-to {
   opacity: 0;
 }
+
+.container {
+  display: flex;
+}
+
+.left-sidebar {
+  width: 20%;
+}
+
+.main-view {
+  width: 100%;
+}
+
 </style>
 
