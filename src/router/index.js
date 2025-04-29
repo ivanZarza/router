@@ -106,7 +106,7 @@ const router = createRouter({
       //mediante un objeto,con los parametros{ top: null, left: null} se hace scroll a la posicion elegida 
       //y con {behavior: null} se elige el comportamiento del scroll
       //savedPosition guarda la posicion anterior del scroll, y se puede usar para hacer scroll a la posicion anterior
-  scrollBehavior(to, from, savedPosition) {
+ /*  scrollBehavior(to, from, savedPosition) {
     // Ya que la pagina tiene una transicion de 300ms,por medio de una promesa con un setTimeout,
     // se espera, para que la transicion termine y se haga el scroll
     return savedPosition || new Promise((resolve) => {
@@ -114,7 +114,7 @@ const router = createRouter({
         resolve({ top: 0, left: 0, behavior:'smooth'  })
       }, 5000)
     })
-  }
+  } */
 })
 
 //se ejecuta antes de que se renderice la ruta, se puede usar para validar si el usuario esta autenticado
