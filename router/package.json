@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "build.ghPages": "vite build --base /router/",
+    "build.ghPages": "vite build --base /router/router/",
     "preview": "vite preview"
   },
   "dependencies": {
