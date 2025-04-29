@@ -18,7 +18,7 @@ const destinations = sourceData.destinations
         :to="{ name: 'destination', params: { id: destination.id, slug: destination.slug } }"
         >
         <h1>{{destination.name}}</h1>
-        <img :src="`/images/${destination.image}`" :alt="destination.name">
+        <img :src="`./images/${destination.image}`" :alt="destination.name">
       </RouterLink>
     </div>
   </div>
